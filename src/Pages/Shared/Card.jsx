@@ -12,7 +12,7 @@ const Card = ({ service }) => {
             <PhotoView src={img}>
               <img
                 src={img}
-                className="w-4/5 mx-auto rounded-lg pt-4 "
+                className="w-4/5 mx-auto rounded-lg pt-4 cursor-pointer"
                 alt=""
               />
             </PhotoView>
