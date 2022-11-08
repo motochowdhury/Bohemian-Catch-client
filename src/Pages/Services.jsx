@@ -15,7 +15,7 @@ const Services = () => {
         <h1 className="text-black text-4xl font-bold font-[poppins] text-center py-10">
           All Services
         </h1>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-4">
           {services.map((service) => (
             <Card key={service?._id} service={service} />
           ))}

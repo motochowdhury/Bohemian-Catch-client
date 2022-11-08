@@ -1,8 +1,9 @@
 import React from "react";
 import { PhotoView } from "react-photo-view";
+import { Link } from "react-router-dom";
 
 const Card = ({ service }) => {
-  const { img, serviceName, desc, price } = service;
+  const { img, serviceName, desc, price, _id } = service;
   return (
     <div className="">
       <div className="shadow-lg rounded-2xl p-4 bg-gray-900 w-[90%] lg:w-64 m-auto relative">
@@ -22,6 +23,11 @@ const Card = ({ service }) => {
             <p className="text-gray-50 text-xs font-thin py-2 px-6">
               {`${desc.slice(0, 99)}...`}
             </p>
+            <Link
+              className="btn bg-[#04DA8D] py-2 rounded-full"
+              to={`/services/${_id}`}>
+              View details
+            </Link>
           </div>
         </div>
       </div>
