@@ -1,8 +1,61 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import app from "../firebase.config";
 
 export const AuthContext = createContext();
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
 const AuthProvider = ({ children }) => {
-  const authInfo = { name: "moto" };
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+  const createUser = (email, pass) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, pass);
+  };
+
+  const update = (name) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, { displayName: name });
+  };
+
+  const login = (email, pass) => {
+    return signInWithEmailAndPassword(auth, email, pass);
+  };
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (currUser) => {
+      setUser(currUser);
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
+
+  const authInfo = {
+    googleLogin,
+    user,
+    logOut,
+    createUser,
+    update,
+    loading,
+    login,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

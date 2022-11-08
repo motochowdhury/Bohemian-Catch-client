@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { Login } = useContext(AuthContext);
@@ -12,6 +13,9 @@ const Login = () => {
 
   const inputValue = (data) => {
     const { email, pass } = data;
+    Login(email, pass)
+      .then((result) => console.log(result.user))
+      .catch((err) => console.log(err.message));
   };
   return (
     <div className="max-h-screen flex items-center justify-center">
@@ -42,7 +46,7 @@ const Login = () => {
             </button>
           </div>
         </form>
-
+        <SocialLogin />
         <p>
           Don't Have an account? <Link to="/register">Register</Link>
         </p>
