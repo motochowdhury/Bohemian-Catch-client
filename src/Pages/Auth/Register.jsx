@@ -12,12 +12,12 @@ const Register = () => {
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const { name, email, pass } = data;
+    const { name, email, pass, img } = data;
 
     createUser(email, pass)
       .then((result) => {
         console.log(result.user);
-        update(name)
+        update(name, img)
           .then(() => {})
           .catch((err) => console.log(`from update: ${err.message}`));
         navigate(from, { replace: true });
@@ -39,6 +39,12 @@ const Register = () => {
               className="border outline-none rounded block py-1"
               type="text"
               {...register("name")}
+            />
+            <label htmlFor="name">Profile imgae</label>
+            <input
+              className="border outline-none rounded block py-1"
+              type="text"
+              {...register("img")}
             />
             <label htmlFor="email">Email</label>
             <input
