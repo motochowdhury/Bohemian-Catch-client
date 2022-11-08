@@ -1,11 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthProvider";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { Login } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,26 +12,6 @@ const Login = () => {
 
   const inputValue = (data) => {
     const { email, pass } = data;
-    login(email, pass)
-      .then((result) => {
-        const user = {
-          email: result.user.email,
-        };
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        })
-          .then((res) => res.json())
-          .then((token) => {
-            console.log(token);
-            localStorage.setItem("token", token.token);
-          });
-        navigate(from, { replace: true });
-      })
-      .catch((err) => console.log(err.message));
   };
   return (
     <div className="max-h-screen flex items-center justify-center">
@@ -63,7 +42,7 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <SocialLogin />
+
         <p>
           Don't Have an account? <Link to="/register">Register</Link>
         </p>
