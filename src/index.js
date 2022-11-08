@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import AuthProvider from "./Contexts/AuthProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <PhotoProvider>
-      <App />
-    </PhotoProvider>
+    <AuthProvider>
+      <PhotoProvider>
+        <App />
+      </PhotoProvider>
+    </AuthProvider>
   </>
 );
 

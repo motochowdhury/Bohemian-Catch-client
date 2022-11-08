@@ -38,7 +38,9 @@ const ServiceDetails = () => {
               </div>
             ) : (
               reviews.map((review) => (
-                <div className="flex bg-white m-4 p-3 rounded-xl shadow">
+                <div
+                  key={review._id}
+                  className="flex bg-white m-4 p-3 rounded-xl shadow">
                   <div className="flex items-center">
                     <div className="w-16 h-16">
                       <img
