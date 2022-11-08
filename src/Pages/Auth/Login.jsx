@@ -5,7 +5,7 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
-  const { Login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,8 +13,10 @@ const Login = () => {
 
   const inputValue = (data) => {
     const { email, pass } = data;
-    Login(email, pass)
-      .then((result) => console.log(result.user))
+    login(email, pass)
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch((err) => console.log(err.message));
   };
   return (

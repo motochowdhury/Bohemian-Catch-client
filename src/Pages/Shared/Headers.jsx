@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { VscFold, VscSymbolKeyword } from "react-icons/vsc";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Headers = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const links = [
     <Link to="/">Home</Link>,
@@ -12,6 +14,11 @@ const Headers = () => {
     <Link to="/">Home</Link>,
     <Link to="/">Home</Link>,
   ];
+  const signOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.log(err.message));
+  };
   return (
     <div className="bg-gray-900">
       <div className="py-2 mx-auto max-w-[90%] lg:max-w-6xl">
@@ -46,13 +53,23 @@ const Headers = () => {
           </ul>
           <ul className="flex items-center hidden space-x-8 lg:flex">
             <li>
-              <Link
-                to="/login"
-                className="inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-blue-600"
-                aria-label="Sign up"
-                title="Sign up">
-                Sign up
-              </Link>
+              {user ? (
+                <button
+                  onClick={signOut}
+                  className="inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-blue-600"
+                  aria-label="Sign up"
+                  title="Sign up">
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-blue-600"
+                  aria-label="Sign up"
+                  title="Sign up">
+                  Sign up
+                </Link>
+              )}
             </li>
           </ul>
           <div className="lg:hidden">
