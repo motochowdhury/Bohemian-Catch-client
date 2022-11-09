@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import SocialLogin from "./SocialLogin";
+import { dynamicTitle } from "../../Utils/TitleChanger";
 
 const Login = () => {
+  dynamicTitle("Login-Bohemian_cath");
   const { login } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();

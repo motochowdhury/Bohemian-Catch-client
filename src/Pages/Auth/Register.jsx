@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { dynamicTitle } from "../../Utils/TitleChanger";
 import SocialLogin from "./SocialLogin";
 
 const Register = () => {
+  dynamicTitle("Register-Account_Bohemian_Cath");
   const { createUser, update } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();

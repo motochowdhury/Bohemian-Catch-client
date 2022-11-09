@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { dynamicTitle } from "../Utils/TitleChanger";
 import Card from "./Shared/Card";
 
 const Services = () => {
+  dynamicTitle("Services-Bohemian-cath");
   const [services, setServices] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/services")

@@ -83,7 +83,7 @@ const Headers = () => {
             <button
               aria-label="Open Menu"
               title="Open Menu"
-              className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline text-white"
+              className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline text-white text-2xl"
               onClick={() => setIsMenuOpen(true)}>
               <VscSymbolKeyword />
             </button>
@@ -125,11 +125,34 @@ const Headers = () => {
                       {links.map((link, idx) => (
                         <li
                           key={idx}
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+                          className="font-medium font-poppins tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
                           {link}
                         </li>
                       ))}
+                      {user && (
+                        <>
+                          <li className="font-medium font-poppins tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400">
+                            <Link to="/my-reviews">My Review</Link>
+                          </li>
+                          <li className="font-medium font-poppins tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400">
+                            <Link to="/add-service">Add Service</Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
+                    {user ? (
+                      <button
+                        onClick={signOut}
+                        className="btn rounded-full mt-4 bg-blue-600 font-poppins text-white px-4 py-2">
+                        Logout
+                      </button>
+                    ) : (
+                      <Link
+                        className="btn rounded-full mt-4 bg-blue-600 font-poppins text-white px-4 py-2"
+                        to="/login">
+                        Login
+                      </Link>
+                    )}
                   </nav>
                 </div>
               </div>
