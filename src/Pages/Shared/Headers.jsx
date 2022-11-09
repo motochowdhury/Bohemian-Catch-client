@@ -53,7 +53,7 @@ const Headers = () => {
                   <Link to="/my-reviews">My Review</Link>
                 </li>
                 <li className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-                  <Link to="/">Add Service</Link>
+                  <Link to="/add-service">Add Service</Link>
                 </li>
               </>
             )}
@@ -88,7 +88,7 @@ const Headers = () => {
               <VscSymbolKeyword />
             </button>
             {isMenuOpen && (
-              <div className="absolute top-0 left-0 w-full">
+              <div className="absolute top-0 left-0 w-full z-30">
                 <div className="p-5 bg-white border rounded shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <div>

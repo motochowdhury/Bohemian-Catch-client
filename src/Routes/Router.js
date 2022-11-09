@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
+import AddService from "../Pages/AddService";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import RequireAuth from "../Pages/Auth/RequireAuth";
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
         element: (
           <RequireAuth>
             <MyReviews />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "/add-service",
+        element: (
+          <RequireAuth>
+            <AddService />
           </RequireAuth>
         ),
       },
