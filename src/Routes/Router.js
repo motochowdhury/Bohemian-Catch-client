@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import RequireAuth from "../Pages/Auth/RequireAuth";
 import Home from "../Pages/Home/Home";
 import MyReviews from "../Pages/MyReviews";
 import ServiceDetails from "../Pages/ServiceDetails";
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-reviews",
-        element: <MyReviews />,
+        element: (
+          <RequireAuth>
+            <MyReviews />
+          </RequireAuth>
+        ),
       },
     ],
   },
