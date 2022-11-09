@@ -10,9 +10,9 @@ const Services = () => {
       .then((data) => setServices(data.allService));
   }, []);
   return (
-    <div className="w-full bg-[#E6E5DD]">
+    <div className="w-full py-10 bg-[#E6E5DD]">
       <div className="lg:max-w-6xl mx-auto">
-        <h1 className="text-black text-4xl font-bold font-[poppins] text-center py-10">
+        <h1 className="text-black text-4xl font-bold font-[poppins] text-center mb-10 border-b-2 border-[#04DA8D]">
           All Services
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

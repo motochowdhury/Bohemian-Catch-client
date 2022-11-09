@@ -12,8 +12,10 @@ const HomeService = () => {
   }, []);
   return (
     <div className="w-full bg-[#E6E5DD]">
-      <div className="pt-10 md:pt-16">
-        <h1 className="text-black text-4xl font-bold text-center">Services</h1>
+      <div className="pt-10 md:pt-16 w-1/4 flex justify-center mx-auto">
+        <h1 className="text-black text-4xl font-bold font-poppins text-center border-b-2 border-[#04DA8D]">
+          Services
+        </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:max-w-6xl max-w-[90%] mx-auto py-20 space-y-12 lg:space-y-0 px-7">
         {services.map((service) => (

@@ -19,12 +19,14 @@ const Card = ({ service }) => {
             <p className="absolute text-sm italic text-white top-2 right-2">
               {`price: $${price}`}
             </p>
-            <p className="text-white text-lg mt-4">{serviceName}</p>
-            <p className="text-gray-50 text-xs font-thin py-2 px-6">
+            <p className="text-white font-poppins text-lg mt-4">
+              {serviceName}
+            </p>
+            <p className="text-gray-50 text-xs font-roboto py-2 px-6">
               {`${desc.slice(0, 99)}...`}
             </p>
             <Link
-              className="btn bg-[#04DA8D] py-2 rounded-full"
+              className="btn font-poppins bg-[#04DA8D] py-2 rounded-full"
               to={`/services/${_id}`}>
               View details
             </Link>

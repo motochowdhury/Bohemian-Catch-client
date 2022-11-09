@@ -8,8 +8,8 @@ const Headers = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const links = [
     <Link to="/">Home</Link>,
-    <Link to="/">Home</Link>,
-    <Link to="/">Home</Link>,
+    <Link to="/">All Reviews</Link>,
+    <Link to="/">Blog</Link>,
   ];
   const signOut = () => {
     logOut()
