@@ -10,9 +10,6 @@ const Headers = () => {
     <Link to="/">Home</Link>,
     <Link to="/">Home</Link>,
     <Link to="/">Home</Link>,
-    <Link to="/">Home</Link>,
-    <Link to="/">Home</Link>,
-    <Link to="/">Home</Link>,
   ];
   const signOut = () => {
     logOut()
@@ -50,6 +47,16 @@ const Headers = () => {
                 {link}
               </li>
             ))}
+            {user && (
+              <>
+                <li className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+                  <Link to="/">My Review</Link>
+                </li>
+                <li className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+                  <Link to="/">Add Service</Link>
+                </li>
+              </>
+            )}
           </ul>
           <ul className="flex items-center hidden space-x-8 lg:flex">
             <li>

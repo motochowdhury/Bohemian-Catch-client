@@ -21,8 +21,8 @@ const Login = () => {
       .catch((err) => console.log(err.message));
   };
   return (
-    <div className="max-h-screen flex items-center justify-center">
-      <div className="w-full lg:w-1/2 space-y-4 border p-4">
+    <div className="h-screen flex items-center justify-center">
+      <div className="w-[80%] md:w-1/2 space-y-4 border p-4">
         <div>
           <h1 className="text-green-400 text-3xl font-bold font-sec text-center">
             Login
@@ -49,8 +49,9 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <p className="text-center font-medium font-poppins">Social Login</p>
         <SocialLogin />
-        <p>
+        <p className="text-center font-semibold font-poppins">
           Don't Have an account? <Link to="/register">Register</Link>
         </p>
       </div>

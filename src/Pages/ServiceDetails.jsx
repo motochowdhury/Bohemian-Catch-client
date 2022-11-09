@@ -48,20 +48,20 @@ const ServiceDetails = () => {
                 <h2 className="text-lg md:text-2xl font-[poppins] font-semibold text-black text-center">
                   {serviceName}
                 </h2>
-                <p className="font-[poppins] font-semibold text-center mt-3 border-b-2 border-black md:border-0 text-[#04DA8D]">{`price: $${price}`}</p>
+                <p className="font-poppins font-semibold text-center mt-3 border-b-2 border-black md:border-0 text-[#04DA8D]">{`price: $${price}`}</p>
               </div>
             </div>
             <div className="m-5">
-              <p className="font-medium font-[Roboto Slab]">{desc}</p>
+              <p className="font-medium font-Roboto">{desc}</p>
             </div>
           </div>
           <div className="lg:col-span-7 w-[90%] mx-auto lg:w-full bg-[#D4FAEC] rounded-xl">
             <div>
-              <h4 className="font-bold font-[poppins] text-2xl text-center mt-3">
+              <h4 className="font-bold font-poppins text-2xl text-center mt-3">
                 Reviews
               </h4>
               {reviews.length === 0 ? (
-                <div className="flex mt-20 items-center justify-center text-2xl font-bold font-[poppins]">
+                <div className="flex mt-20 items-center justify-center text-2xl font-bold font-poppins">
                   <h1>No Reviews Added yet</h1>
                 </div>
               ) : (
@@ -82,13 +82,13 @@ const ServiceDetails = () => {
                         />
                       </div>
                       <div className="mt-4 border-b-2 md:border-b-0 md:w-28 md:border-r-2 px-4  border-black">
-                        <h4 className="font-medium text-sm font-[poppins]">
+                        <h4 className="font-medium text-sm font-poppins">
                           {review.name}
                         </h4>
                       </div>
                     </div>
                     <div className="w-[90%] px-4 flex items-center">
-                      <p className="text-center md:text-start font-medium font-[poppins] text-sm">
+                      <p className="text-center md:text-start font-medium font-poppins text-sm">
                         {review.review}
                       </p>
                     </div>
@@ -140,9 +140,7 @@ const ServiceDetails = () => {
                       open ? "block" : "hidden"
                     } flex justify-center pb-10`}>
                     <h1>Please login for add review</h1>
-                    <Link
-                      to="/login"
-                      className="ml-2 font-medium font-[poppins]">
+                    <Link to="/login" className="ml-2 font-medium font-poppins">
                       Login
                     </Link>
                   </div>

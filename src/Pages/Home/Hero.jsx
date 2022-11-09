@@ -7,7 +7,7 @@ const Hero = () => {
     <div className="w-full bg-[#04DA8D] relative">
       <div className="lg:max-w-6xl max-w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 py-10 space-y-12 lg:space-y-0 px-7">
         <div className="space-y-6 md:w-3/4 lg:w-full md:mx-auto">
-          <h1 className="text-black text-5xl font-bold font-[poppins] text-center lg:text-left">
+          <h1 className="text-black text-4xl lg:text-5xl font-bold font-[poppins] text-center lg:text-left">
             I have earned huge love from client with real review
           </h1>
           <p className="text-black text-xl font-bold font-[poppins] text-center lg:text-left lg:w-[90%]">

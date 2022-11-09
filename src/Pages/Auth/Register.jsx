@@ -25,8 +25,8 @@ const Register = () => {
       .catch((err) => console.log(err.message));
   };
   return (
-    <div className="max-h-screen flex items-center justify-center">
-      <div className="w-full lg:w-1/2 space-y-4 border p-4">
+    <div className="h-screen flex items-center justify-center">
+      <div className="w-[80%] md:w-1/2 space-y-4 border p-4">
         <div>
           <h1 className="text-green-400 text-3xl font-bold font-sec text-center">
             Register
@@ -36,24 +36,28 @@ const Register = () => {
           <div className="w-full lg:w-1/2 mx-auto space-y-1 flex flex-col">
             <label htmlFor="name">Your name</label>
             <input
+              required
               className="border outline-none rounded block py-1"
               type="text"
               {...register("name")}
             />
             <label htmlFor="name">Profile imgae</label>
             <input
+              required
               className="border outline-none rounded block py-1"
               type="text"
               {...register("img")}
             />
             <label htmlFor="email">Email</label>
             <input
+              required
               className="border outline-none rounded block py-1"
               type="email"
               {...register("email")}
             />
             <label htmlFor="pass">Password</label>
             <input
+              required
               className="border outline-none rounded block py-1"
               type="password"
               {...register("pass")}
