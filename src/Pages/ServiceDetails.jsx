@@ -1,25 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
-import Fade from "react-reveal/Fade";
 import { useForm } from "react-hook-form";
-import { Input } from "postcss";
 
 const ServiceDetails = () => {
   const { img, price, serviceName, desc, _id } = useLoaderData();
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
+  const [recall, setRecall] = useState(false);
   const { register, handleSubmit } = useForm();
-  const addReview = (data) => {
+
+  const addReview = (data, e) => {
     const reviewData = {
       name: user.displayName ? user.displayName : data.name,
       review: data.review,
       email: user.email,
       img: user.photoURL,
       id: _id,
+      serviceName,
     };
-
     fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {
@@ -27,15 +27,20 @@ const ServiceDetails = () => {
       },
       body: JSON.stringify(reviewData),
     })
-      .then(() => {})
+      .then(() => {
+        e.target.reset();
+      })
       .catch((err) => console.log(err.message));
   };
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?id=${_id}`)
       .then((res) => res.json())
-      .then((data) => setReviews(data));
-  }, [reviews]);
+      .then((data) => {
+        setRecall(!recall);
+        setReviews(data);
+      });
+  }, [recall, _id]);
 
   return (
     <div className="w-full bg-[#FCFBF3] py-10">
@@ -87,7 +92,7 @@ const ServiceDetails = () => {
                         </h4>
                       </div>
                     </div>
-                    <div className="w-[90%] px-4 flex items-center">
+                    <div className="w-[90%] px-4 flex justify-center md:justify-start md:items-center">
                       <p className="text-center md:text-start font-medium font-poppins text-sm">
                         {review.review}
                       </p>
@@ -108,7 +113,7 @@ const ServiceDetails = () => {
                     <div>
                       <form onSubmit={handleSubmit(addReview)}>
                         <div className="flex justify-center my-3">
-                          <div>
+                          <div className="w-full flex flex-col">
                             {user.displayName === null && (
                               <input
                                 type="text"
@@ -121,7 +126,7 @@ const ServiceDetails = () => {
                             <textarea
                               placeholder="Write Your feedback"
                               {...register("review")}
-                              className="w-full h-40 border-2 border-[#04DA8D] outline-none px-2 bg-transparent"></textarea>
+                              className="w-[80%] md:w-[70] mx-auto lg:w-1/2 h-40 border-2 border-[#04DA8D] outline-none px-2 bg-transparent"></textarea>
                           </div>
                         </div>
                         <div className=" flex justify-center mb-5">

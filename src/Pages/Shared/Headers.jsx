@@ -50,7 +50,7 @@ const Headers = () => {
             {user && (
               <>
                 <li className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-                  <Link to="/">My Review</Link>
+                  <Link to="/my-reviews">My Review</Link>
                 </li>
                 <li className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
                   <Link to="/">Add Service</Link>
