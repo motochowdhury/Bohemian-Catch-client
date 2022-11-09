@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import SocialLogin from "./SocialLogin";
 import { dynamicTitle } from "../../Utils/TitleChanger";
+import { toast } from "react-toastify";
 
 const Login = () => {
   dynamicTitle("Login-Bohemian_cath");
@@ -16,11 +17,11 @@ const Login = () => {
   const inputValue = (data) => {
     const { email, pass } = data;
     login(email, pass)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        toast.success("Login Success");
         navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div className="h-screen flex items-center justify-center">
@@ -51,10 +52,13 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <p className="text-center font-medium font-poppins">Social Login</p>
+        <p className="text-center text-sm font-poppins">Social Login</p>
         <SocialLogin />
-        <p className="text-center font-semibold font-poppins">
-          Don't Have an account? <Link to="/register">Register</Link>
+        <p className="text-center text-sm font-poppins">
+          Don't Have an account?{" "}
+          <Link className="text-green-500" to="/register">
+            Register
+          </Link>
         </p>
       </div>
     </div>

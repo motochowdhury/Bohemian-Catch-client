@@ -1,26 +1,41 @@
 import React from "react";
 import { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { toast } from "react-toastify";
+
 const SocialLogin = () => {
-  const { googleLogin } = useContext(AuthContext);
+  const { googleLogin, gitHub } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from || "/";
 
   const googleSignIn = () => {
     googleLogin()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        toast.success("Loging Success");
         navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
+  };
+
+  const githubLogin = () => {
+    gitHub()
+      .then(() => {
+        toast.success("Loging Success");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => toast.error(err.message));
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center space-x-3">
       <FaGoogle
         onClick={googleSignIn}
+        className="text-xl cursor-pointer rounded-full"
+      />
+      <FaGithub
+        onClick={githubLogin}
         className="text-xl cursor-pointer rounded-full"
       />
     </div>

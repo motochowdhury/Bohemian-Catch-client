@@ -42,7 +42,6 @@ const Client = () => {
           />
         </div>
       </div>
-      <button onClick={dateTaker}>New date</button>
     </div>
   );
 };

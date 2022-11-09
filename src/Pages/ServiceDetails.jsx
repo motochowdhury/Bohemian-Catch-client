@@ -3,13 +3,12 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { useForm } from "react-hook-form";
 import { dynamicTitle } from "../Utils/TitleChanger";
-import { addReview } from "../Utils/addReviewFun";
 import Reviews from "../Components/Reviews";
+import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
   dynamicTitle("Service_Detais");
   const { img, price, serviceName, desc, _id } = useLoaderData();
-  const serviceCardInfo = { img, price, serviceName, desc, _id };
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
@@ -33,10 +32,12 @@ const ServiceDetails = () => {
       },
       body: JSON.stringify(reviewData),
     })
+      .then((res) => res.json())
       .then(() => {
+        toast.success("Review Added Successfully");
         e.target.reset();
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   useEffect(() => {

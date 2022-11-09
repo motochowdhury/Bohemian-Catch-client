@@ -121,7 +121,7 @@ const Headers = () => {
                     </div>
                   </div>
                   <nav>
-                    <ul className="space-y-4">
+                    <ul className="space-y-4 mb-4">
                       {links.map((link, idx) => (
                         <li
                           key={idx}
@@ -143,12 +143,12 @@ const Headers = () => {
                     {user ? (
                       <button
                         onClick={signOut}
-                        className="btn rounded-full mt-4 bg-blue-600 font-poppins text-white px-4 py-2">
+                        className="btn rounded-full mt-7 bg-blue-600 font-poppins text-white px-4 py-2">
                         Logout
                       </button>
                     ) : (
                       <Link
-                        className="btn rounded-full mt-4 bg-blue-600 font-poppins text-white px-4 py-2"
+                        className="btn rounded-full mt-7 bg-blue-600 font-poppins text-white px-4 py-2"
                         to="/login">
                         Login
                       </Link>

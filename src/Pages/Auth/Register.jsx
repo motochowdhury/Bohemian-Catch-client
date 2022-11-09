@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { dynamicTitle } from "../../Utils/TitleChanger";
 import SocialLogin from "./SocialLogin";
+import { toast } from "react-toastify";
+import Login from "./Login";
 
 const Register = () => {
   dynamicTitle("Register-Account_Bohemian_Cath");
@@ -17,14 +19,14 @@ const Register = () => {
     const { name, email, pass, img } = data;
 
     createUser(email, pass)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         update(name, img)
           .then(() => {})
-          .catch((err) => console.log(`from update: ${err.message}`));
+          .catch(() => {});
+        toast.success("Successfully registered");
         navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div className="h-screen flex items-center justify-center">
@@ -71,7 +73,14 @@ const Register = () => {
             </button>
           </div>
         </form>
+        <p className="font-poppins text-center text-sm">Social Login</p>
         <SocialLogin />
+        <p className="font-poppins text-center text-sm">
+          Already have an acoount?{" "}
+          <Link className="text-green-400" to="/login">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
