@@ -1,4 +1,6 @@
-export const addService = ({ serviceName, img, price, desc }) => {
+import { toast } from "react-toastify";
+
+export const addService = ({ serviceName, img, price, desc }, e) => {
   const data = {
     serviceName,
     img,
@@ -16,6 +18,7 @@ export const addService = ({ serviceName, img, price, desc }) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      toast.success("Service Added Successfully");
     });
+  e.target.reset();
 };

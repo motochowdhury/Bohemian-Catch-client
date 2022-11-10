@@ -14,6 +14,7 @@ const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
   const [recall, setRecall] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { register, handleSubmit } = useForm();
 
   const addReview = (data, e) => {
@@ -47,9 +48,15 @@ const ServiceDetails = () => {
       .then((data) => {
         setRecall(!recall);
         setReviews(data);
+        setLoading(false);
       });
   }, [recall, _id]);
 
+  if (loading) {
+    return (
+      <div className="w-16 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+    );
+  }
   return (
     <div className="w-full bg-[#FCFBF3] py-10">
       <div className="max-w-6xl mx-auto">

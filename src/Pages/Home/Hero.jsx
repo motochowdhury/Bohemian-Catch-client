@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import hero_1 from "../../Assets/hero_1.jpg";
 import hero_2 from "../../Assets/hero_2.jpg";
 
@@ -16,7 +17,7 @@ const Hero = () => {
           </p>
           <div className="flex justify-center lg:block">
             <button className="btn bg-black text-white font-semibold py-4 px-10 rounded-full">
-              See All Reviews
+              <Link to="/services">See all services</Link>
             </button>
           </div>
         </div>

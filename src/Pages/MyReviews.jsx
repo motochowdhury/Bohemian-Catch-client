@@ -29,7 +29,7 @@ const MyReviews = () => {
       })
       .then((data) => setReviews(data))
       .catch((err) => toast.error(err.message));
-  }, [hitApi, user?.email]);
+  }, [hitApi, user?.email, logOut]);
 
   return (
     <div className="w-full h-full">

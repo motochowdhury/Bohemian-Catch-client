@@ -4,6 +4,7 @@ import AddService from "../Pages/AddService";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import RequireAuth from "../Pages/Auth/RequireAuth";
+import Blog from "../Pages/Blog";
 import Home from "../Pages/Home/Home";
 import MyReviews from "../Pages/MyReviews";
 import ServiceDetails from "../Pages/ServiceDetails";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
           fetch(
             `https://bohemian-catch-server-motochowdhury.vercel.app/services/${params.id}`
           ),
+      },
+      {
+        path: "/blogs",
+        element: <Blog />,
       },
       {
         path: "/login",

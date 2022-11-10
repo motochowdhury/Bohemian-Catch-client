@@ -2,18 +2,21 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { VscFold, VscSymbolKeyword } from "react-icons/vsc";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { toast } from "react-toastify";
 
 const Headers = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const links = [
     <Link to="/">Home</Link>,
-    <Link to="/">All Reviews</Link>,
-    <Link to="/">Blog</Link>,
+    <Link to="/services">All services</Link>,
+    <Link to="/blogs">Blog</Link>,
   ];
   const signOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        toast.success("Successfully Loged out");
+      })
       .catch((err) => console.log(err.message));
   };
   return (
@@ -105,7 +108,7 @@ const Headers = () => {
                           fontSize="25"
                           fontFamily="KristenITC-Regular, Kristen ITC">
                           <tspan x="0" y="51">
-                            Bohemian Cath
+                            Bohemian Catch
                           </tspan>
                         </text>
                       </svg>

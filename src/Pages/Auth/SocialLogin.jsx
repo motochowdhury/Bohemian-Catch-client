@@ -13,7 +13,11 @@ const SocialLogin = () => {
 
   const googleSignIn = () => {
     googleLogin()
-      .then(() => {
+      .then((result) => {
+        const email = result.user.email;
+        fetch(`https://bohemian-catch-server.vercel.app/jwt?email=${email}`)
+          .then((res) => res.json())
+          .then((data) => localStorage.setItem("token", data.token));
         toast.success("Loging Success");
         navigate(from, { replace: true });
       })
@@ -22,7 +26,11 @@ const SocialLogin = () => {
 
   const githubLogin = () => {
     gitHub()
-      .then(() => {
+      .then((result) => {
+        const email = result.user.email;
+        fetch(`https://bohemian-catch-server.vercel.app/jwt?email=${email}`)
+          .then((res) => res.json())
+          .then((data) => localStorage.setItem("token", data.token));
         toast.success("Loging Success");
         navigate(from, { replace: true });
       })

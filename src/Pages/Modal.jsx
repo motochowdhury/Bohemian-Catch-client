@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { TiDelete, TiEdit } from "react-icons/ti";
-
+import { toast } from "react-toastify";
 const Modal = ({ review, controller, hitApi }) => {
   const [showModal, setShowModal] = useState(false);
   const { register, handleSubmit } = useForm();
   const updateReview = (reviewWord, e) => {
     const data = { review: reviewWord.review };
-    console.log(data);
     setShowModal(false);
     controller(false);
     fetch(
-      `https://bohemian-catch-server.vercel.app/update-review?id=${review._id}`,
+      `https://bohemian-catch-server.vercel.app/update-review?id=${review?._id}`,
       {
         method: "PATCH",
         headers: {
@@ -21,10 +20,11 @@ const Modal = ({ review, controller, hitApi }) => {
       }
     )
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
+        toast.success("Updated Review");
         hitApi(true);
       });
-    e.preventDefault();
+    // e.preventDefault();
   };
   return (
     <>
