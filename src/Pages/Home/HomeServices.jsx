@@ -5,8 +5,7 @@ import Card from "../Shared/Card";
 const HomeService = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
-      .then()
+    fetch("https://bohemian-catch-server.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data.limitedService));
   }, []);

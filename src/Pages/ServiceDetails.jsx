@@ -7,8 +7,9 @@ import Reviews from "../Components/Reviews";
 import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
-  dynamicTitle("Service_Detais");
   const { img, price, serviceName, desc, _id } = useLoaderData();
+  console.log(img, price, serviceName, desc, _id);
+  dynamicTitle("Service_Detais");
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
@@ -72,7 +73,7 @@ const ServiceDetails = () => {
               <h4 className="font-bold font-poppins text-2xl text-center mt-3">
                 Reviews
               </h4>
-              {reviews.length === 0 ? (
+              {reviews?.length === 0 ? (
                 <div className="flex mt-20 items-center justify-center text-2xl font-bold font-poppins">
                   <h1>No Reviews Added yet</h1>
                 </div>

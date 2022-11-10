@@ -1,18 +1,6 @@
 import React from "react";
 
 const Client = () => {
-  const dateTaker = () => {
-    const date = {
-      time: new Date(),
-    };
-    fetch("http://localhost:5000", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(date),
-    });
-  };
   return (
     <div className="w-full">
       <div className="max-w-[80%] mx-auto lg:max-w-6xl ">

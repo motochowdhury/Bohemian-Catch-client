@@ -28,7 +28,9 @@ const router = createBrowserRouter([
         path: "/services/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`https://bohemian-catch-server.vercel.app/${params.id}`),
+          fetch(
+            `https://bohemian-catch-server-motochowdhury.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/login",
