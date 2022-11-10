@@ -7,7 +7,7 @@ export const addService = ({ serviceName, img, price, desc }) => {
     date: new Date(),
   };
 
-  fetch("http://localhost:5000/services", {
+  fetch("https://bohemian-catch-server.vercel.app/services", {
     method: "POST",
     headers: {
       "content-type": "application/json",

@@ -14,8 +14,8 @@ root.render(
   <>
     <AuthProvider>
       <PhotoProvider>
-        <App />
         <ToastContainer position="top-right" autoClose={500} />
+        <App />
       </PhotoProvider>
     </AuthProvider>
   </>

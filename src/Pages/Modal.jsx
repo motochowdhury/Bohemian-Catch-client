@@ -10,13 +10,16 @@ const Modal = ({ review, controller, hitApi }) => {
     console.log(data);
     setShowModal(false);
     controller(false);
-    fetch(`http://localhost:5000/update-review?id=${review._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://bohemian-catch-server.vercel.app/update-review?id=${review._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         hitApi(true);

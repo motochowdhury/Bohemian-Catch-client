@@ -18,6 +18,9 @@ const Login = () => {
     const { email, pass } = data;
     login(email, pass)
       .then(() => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+          .then((res) => res.json())
+          .then((data) => localStorage.setItem("token", data.token));
         toast.success("Login Success");
         navigate(from, { replace: true });
       })

@@ -25,7 +25,7 @@ const ServiceDetails = () => {
       serviceName,
       date: new Date(),
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://bohemian-catch-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,7 +41,7 @@ const ServiceDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?id=${_id}`)
+    fetch(`https://bohemian-catch-server.vercel.app/reviews?id=${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setRecall(!recall);

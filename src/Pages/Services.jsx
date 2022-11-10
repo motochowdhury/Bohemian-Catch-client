@@ -5,12 +5,23 @@ import Card from "./Shared/Card";
 const Services = () => {
   dynamicTitle("Services-Bohemian-cath");
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://bohemian-catch-server.vercel.app/services")
       .then()
       .then((res) => res.json())
-      .then((data) => setServices(data.allService));
+      .then((data) => {
+        setServices(data.allService);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-16 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+    );
+  }
+
   return (
     <div className="w-full py-10 bg-[#E6E5DD]">
       <div className="lg:max-w-6xl mx-auto">

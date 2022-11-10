@@ -1,5 +1,5 @@
 export const deleteReview = (id, setHitApi, hitApi) => {
-  fetch(`http://localhost:5000/delete-review?id=${id}`, {
+  fetch(`https://bohemian-catch-server.vercel.app/delete-review?id=${id}`, {
     method: "DELETE",
   })
     .then((res) => res.json())
